@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char input[20];
+    while (fgets(input, sizeof(input), stdin)) {
+        input[strcspn(input, "\n")] = 0;
+        char *token;
+        char area_code[4], first_part[4], second_part[5], full_number[8];
+        token = strtok(input, "()-");
+        if (token) {
+            strcpy(area_code, token);
+        }
+        token = strtok(NULL, "()-");
+        if (token) {
+            strcpy(first_part, token);
+        }
+        token = strtok(NULL, "()-");
+        if (token) {
+            strcpy(second_part, token);
+        }
+        strcpy(full_number, first_part);
+        strcat(full_number, second_part);
+        int area = atoi(area_code);
+        long number = atol(full_number);
+        printf("%d - %ld\n", area, number);
+    }
+    return 0;
+}
