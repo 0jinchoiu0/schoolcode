@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+void stringReverse(char *str) {
+    if (*str == '\0') {
+        return;
+    }
+    stringReverse(str + 1);
+    putchar(*str);
+}
+
+int main() {
+    char input[100];
+    
+    while (fgets(input, sizeof(input), stdin)) {
+        input[strcspn(input, "\n")] = 0;
+        
+        if (strlen(input) == 0) {
+            break;
+        }
+        stringReverse(input);
+        printf("\n");
+    }
+    return 0;
+}
