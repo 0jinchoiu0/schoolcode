@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define PI 3.14
+
+void calculateCircumference(double r) {
+    double circumference=2*r*PI;
+    printf("%.2f\n",circumference);
+}
+
+void calculateArea(double r) {
+    double area=r*r*PI;
+    printf("%.2f\n",area);
+}
+
+void calculateVolume(double r) {
+    double volume=r*r*r*PI*(4.0/3.0);
+    printf("%.2f\n",volume);
+}
+
+void exitProgram(double r) {
+    exit(0);
+}
+
+int main() {
+    int option;
+    double r_input;
+    while(1){
+
+    	scanf("%d",&option);
+
+    	void (*functions[])(double) = {calculateCircumference, calculateArea, calculateVolume, exitProgram};
+		scanf("%lf",&r_input);
+    	if (option >= 0 && option <= 3) {
+    	    functions[option](r_input);
+    	}
+    }
+	return 0;
+}
